@@ -6,6 +6,12 @@ A Chatbot on Terminal powered by Google Generative AI.
 
 ![Geminal_v1.0.0.png](assets/Geminal_v1.0.0.png)
 
+## Requirements
+
+- Linux, Mac OS, or [WSL on Windows](https://learn.microsoft.com/en-us/windows/wsl/install)
+- [Docker](https://docs.docker.com/engine/install/)
+- [Python](https://www.python.org/downloads/) >= 3.10
+
 ## Tested on
 
 - Ubuntu 22.04
