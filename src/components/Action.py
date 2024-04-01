@@ -45,6 +45,7 @@ from prompt_toolkit.formatted_text import HTML
 
 is_loaded: bool = False
 
+
 class Action:
 
     def __init__(self, prompt_count: int) -> None:
@@ -198,15 +199,22 @@ class Action:
 
                 code_block_menu: TerminalMenu = TerminalMenu(
                     menu_entries=get_code_blocks_from_last_message(),
-                    title='Available code blocks:',
+                    title='[*] Available code blocks:',
                     preview_command=highlight_code_block,
-                    preview_size=0.5
+                    preview_size=0.5,
+                    shortcut_key_highlight_style=("fg_cyan", "bold",)
                 )
-
                 code_block_index: int = code_block_menu.show()
-                selected_code_block: str = code_block_dict[
-                    language_list[code_block_index].split()[-1]
-                ]
+
+                try:
+                    selected_code_block: str = code_block_dict[
+                        language_list[code_block_index].split()[-1]
+                    ]
+                except KeyboardInterrupt:
+                    sys.exit()
+                except Exception:
+                    sys.exit()
+
                 pyperclip.copy(selected_code_block)
                 print_info(
                     message='Copied the selected code block to your clipboard.')
@@ -229,13 +237,14 @@ class Action:
             prefix_prompt: HTML = HTML(
                 '<b><ansibrightblue>[*] Name this conversation:</ansibrightblue></b> '
             )
-            
+
             try:
                 file_name_input: str = f"""{prompt(message=prefix_prompt, placeholder=placeholder).strip()}"""
             except KeyboardInterrupt:
                 sys.exit()
             except Exception as e:
-                print_error(message=f'An error occurred while naming the conversation: {e}')
+                print_error(
+                    message=f'An error occurred while naming the conversation: {e}')
                 return
 
             def to_underscored_text(plain_text: str) -> str:
@@ -265,7 +274,7 @@ class Action:
 
             with open(file_path, 'w', encoding='utf-8') as file:
                 json.dump(obj=file_content, fp=file, indent=2)
-            
+
             Console().print()
             print_info(message=f'Saved file as \[{file_path}].')
             return
@@ -293,7 +302,14 @@ class Action:
             title='[*] Available saved conversation files:'
         )
         file_name_index: int = file_name_menu.show()
-        selected_file_name: str = f'{file_names[file_name_index]}'
+
+        try:
+            selected_file_name: str = f'{file_names[file_name_index]}'
+        except KeyboardInterrupt:
+            sys.exit()
+        except Exception:
+            sys.exit()
+
         selected_file_path: str = os.path.join(
             SAVE_DIRECTORY, selected_file_name
         )
@@ -349,7 +365,14 @@ class Action:
             title='[*] Available saved conversations files:'
         )
         file_name_index: str = file_name_menu.show()
-        selected_file_name: str = f'{file_names[file_name_index]}'
+
+        try:
+            selected_file_name: str = f'{file_names[file_name_index]}'
+        except KeyboardInterrupt:
+            sys.exit()
+        except Exception:
+            sys.exit()
+
         selected_file_path: str = os.path.join(
             SAVE_DIRECTORY,
             selected_file_name

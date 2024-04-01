@@ -37,7 +37,8 @@ class Selection:
 
         option_menu: TerminalMenu = TerminalMenu(
             menu_entries=options,
-            title=menu_title
+            title=menu_title,
+            shortcut_key_highlight_style=("fg_cyan", "bold",)
         )
         option_index: int = option_menu.show()
         match options[option_index]:
@@ -60,7 +61,8 @@ class Selection:
 
         action_menu: TerminalMenu = TerminalMenu(
             menu_entries=actions,
-            title='Interactive actions:'
+            title='Interactive actions:',
+            shortcut_key_highlight_style=("fg_cyan", "bold",)
         )
 
         action_index: int = action_menu.show()
@@ -76,7 +78,8 @@ class Selection:
 
         action_menu: TerminalMenu = TerminalMenu(
             menu_entries=actions,
-            title='Interactive actions:'
+            title='Interactive actions:',
+            shortcut_key_highlight_style=("fg_cyan", "bold",)
         )
         
         action_index: int = action_menu.show()
