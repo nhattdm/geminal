@@ -227,9 +227,16 @@ class Action:
                 '<i><ansigray>Enter a name for this conversation</ansigray></i>'
             )
             prefix_prompt: HTML = HTML(
-                '<b><ansibrightgreen>[*] Name this conversation:</ansibrightgreen></b> '
+                '<b><ansibrightblue>[*] Name this conversation:</ansibrightblue></b> '
             )
-            file_name_input: str = f"""{prompt(message=prefix_prompt, placeholder=placeholder).strip()}"""
+            
+            try:
+                file_name_input: str = f"""{prompt(message=prefix_prompt, placeholder=placeholder).strip()}"""
+            except KeyboardInterrupt:
+                sys.exit()
+            except Exception as e:
+                print_error(message=f'An error occurred while naming the conversation: {e}')
+                return
 
             def to_underscored_text(plain_text: str) -> str:
                 words: list[str] = re.findall(
