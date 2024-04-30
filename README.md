@@ -4,7 +4,7 @@ A Chatbot on Terminal powered by Google Generative AI.
 
 ## 🎥 Demo
 
-[demo.mp4]()
+[demo.mp4](https://github.com/nhattdm/Geminal/assets/86051561/33de07f3-5eb3-4855-933e-3fe90904bd05)
 
 ## 🎯 Why Geminal?
 
@@ -35,7 +35,7 @@ Here's why you might choose Geminal:
 ## ⚡ Quick Installation
 
 ```bash
-wget ... | pip install
+pip install "https://github.com/nhattdm/Geminal/releases/download/v0.1.0/geminal-0.1.0.tar.gz"
 ```
 
 ## 🦾 Supported Model Versions
