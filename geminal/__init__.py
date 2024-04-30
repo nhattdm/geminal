@@ -1,4 +1,12 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 """
+
+Author  : nhattdm
+GitHub  : https://github.com/nhattdm/
+
+
 MIT License
 
 Copyright (c) 2024 Tran Doan Minh Nhat (nhattdm)
@@ -20,22 +28,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 """
 
-import google.generativeai as ai
-
-from components.Config import get_google_api_key, MODEL_NAME
-
-ai.configure(api_key=get_google_api_key())
-model = ai.GenerativeModel(model_name=MODEL_NAME)
-chat = model.start_chat(history=[])
-
-
-def get_last_response() -> str:
-    last_response: str = chat.history[-1].parts[0].text
-    return last_response
-
-
-def get_chat_history() -> str:
-    chat_history: str = str(chat.history)
-    return chat_history
+__version__ = '0.1.0'
+__author__ = 'nhattdm'
+__license__ = 'MIT'

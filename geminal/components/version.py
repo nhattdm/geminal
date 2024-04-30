@@ -1,4 +1,12 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 """
+
+Author  : nhattdm
+GitHub  : https://github.com/nhattdm/
+
+
 MIT License
 
 Copyright (c) 2024 Tran Doan Minh Nhat (nhattdm)
@@ -20,17 +28,15 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 """
 
-from rich.console import Console
+from .config import conf
+from .console import log
 
-from components.Config import __author__, __version__
 
-console = Console()
-
-def print_banner() -> str:
-    
-    banner: str = f"""
+def print_version() -> None:
+    log(anything=f"""
 %s  ________ %s        %s         %s.__ %s        %s        %s.__    
 %s /  _____/ %s  ____  %s  _____  %s|__|%s  ____  %s_____   %s|  |   
 %s/   \  ___ %s_/ __ \ %s /     \ %s|  |%s /    \ %s\__  \  %s|  |   
@@ -39,16 +45,22 @@ def print_banner() -> str:
 %s        \/ %s     \/ %s      \/ %s    %s     \/ %s     \/ %s
 %sA Chatbot on Terminal powered by Google Generative AI.
 
-%sVersion : %s{__version__}
-%sAuthor  : %s{__author__}
-""" % ('[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]', '[bold bright_red]', '[bold bright_yellow]',
-        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]', '[bold bright_red]', '[bold bright_yellow]',
-        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]', '[bold bright_red]', '[bold bright_yellow]',
-        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]', '[bold bright_red]', '[bold bright_yellow]',
-        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]', '[bold bright_red]', '[bold bright_yellow]',
-        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]', '[bold bright_red]', '[bold bright_yellow]',
+%sAuthor  : %s{conf['app']['author']}
+%sVersion : %s{conf['app']['version']}""" % (
+        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]',
+        '[bold bright_red]', '[bold bright_yellow]',
+        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]',
+        '[bold bright_red]', '[bold bright_yellow]',
+        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]',
+        '[bold bright_red]', '[bold bright_yellow]',
+        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]',
+        '[bold bright_red]', '[bold bright_yellow]',
+        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]',
+        '[bold bright_red]', '[bold bright_yellow]',
+        '[bold bright_blue]', '[bold bright_red]', '[bold bright_yellow]', '[bold bright_blue]', '[bold bright_green]',
+        '[bold bright_red]', '[bold bright_yellow]',
         '[bold bright_magenta]',
         '[bold bright_yellow]', '[bold bright_green]',
-        '[bold bright_yellow]', '[bold bright_green]')
-    
-    console.print(banner)
+        '[bold bright_yellow]', '[bold bright_green]'
+    )
+        )  # noqa: disable=W605)

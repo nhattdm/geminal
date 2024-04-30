@@ -1,4 +1,12 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 """
+
+Author  : nhattdm
+GitHub  : https://github.com/nhattdm/
+
+
 MIT License
 
 Copyright (c) 2024 Tran Doan Minh Nhat (nhattdm)
@@ -20,30 +28,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 """
 
-import os
-import sys
 
-from components.Console import print_error
+def print_usage() -> None:
+    print("""
+Usage: geminal [-v] [-h] [PROMPT]
 
-__author__: str = 'nhattdm'
-__version__: str = '1.0.0'
+Geminal is a chatbot on Terminal powered by Google Generative AI.
 
-MODEL_NAME: str = 'gemini-pro'
-GOOGLE_API_KEY: str = ''
-SAVE_DIRECTORY: str = os.path.join(
-    os.environ['HOME'], '.geminal', 'conversations')
+options:
+    -h, --help      Show this help message and exit.
+    -v, --version   Show version and exit.
 
-
-def get_google_api_key() -> str:
-    global GOOGLE_API_KEY
-
-    try:
-        GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
-        return GOOGLE_API_KEY
-    except Exception as e:
-        print_error(
-            message='Please set the GOOGLE_API_KEY environment variable before running this program.'
-        )
-        sys.exit()
+prompt:
+    Your prompt can be added after `geminal`. Example: geminal who are you?
+    """.strip())

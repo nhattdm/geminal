@@ -1,10 +1,12 @@
 FROM python:3.10-alpine
 
-WORKDIR /root
+WORKDIR /app
 
-COPY . .
+COPY dist/ /app
 
-RUN pip install . 
+RUN ls -la
+
+RUN pip install geminal-*.tar.gz
 
 ARG GOOGLE_API_KEY
 

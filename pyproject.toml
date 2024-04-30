@@ -1,3 +1,26 @@
+[tool.poetry]
+name = "Geminal"
+version = "0.1.0"
+description = "A Chatbot on Terminal powered by Google Generative AI."
+authors = ["nhattdm"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "*.py", from = "geminal" },
+    { include = "components", from = "geminal"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-generativeai = "*"
+simple-term-menu = "^1.6.4"
+prompt-toolkit = "^3.0.43"
+pyperclip = "^1.8.2"
+rich = "^13.7.1"
+
+[tool.poetry.scripts]
+geminal = "Geminal:run"
+
 [build-system]
-build-backend = "setuptools.build_meta"
-requires = ["setuptools", "wheel"]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

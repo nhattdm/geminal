@@ -1,4 +1,12 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 """
+
+Author  : nhattdm
+GitHub  : https://github.com/nhattdm/
+
+
 MIT License
 
 Copyright (c) 2024 Tran Doan Minh Nhat (nhattdm)
@@ -20,6 +28,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 """
 
 import logging
@@ -28,9 +37,6 @@ from time import sleep
 from threading import Thread
 
 from rich.console import Console
-
-
-def __getExc(e): return e.args[1] if len(e.args) > 1 else str(e)
 
 
 class Loading:
@@ -55,9 +61,13 @@ class Loading:
             thread = Thread(target=cls.__action, args=(message,))
             thread.start()
             return thread
-        except Exception as e:
+        except Exception as ex:
             cls.is_querying = False
-            logging.debug(__getExc(e))
+
+            def getExc(e):
+                return e.args[1] if len(e.args) > 1 else str(e)
+
+            logging.debug(getExc(ex))
 
     @classmethod
     def stop(cls):
