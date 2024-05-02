@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY dist/ /app
 
-RUN ls -la
-
 RUN pip install geminal-*.tar.gz
 
 ARG GOOGLE_API_KEY

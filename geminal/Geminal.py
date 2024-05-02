@@ -30,7 +30,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
-
 import os
 import sys
 import time
@@ -44,7 +43,7 @@ from components.console import log, log_error, new_line
 from components.gemini import chat, display_name, print_welcome
 from components.loading import Loading
 from components.usage import print_usage
-from components.utils import to_capitalized_plain_text, quit_program
+from components.utils import quit_program
 
 from rich.panel import Panel
 from rich.markdown import Markdown

@@ -35,7 +35,7 @@ from typing import Any
 from rich.panel import Panel
 from rich.console import Console
 
-console = Console()
+console: Console = Console()
 
 
 def log(anything: Any) -> None:

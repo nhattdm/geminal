@@ -30,20 +30,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
-
 import logging
 
 from time import sleep
 from threading import Thread
+from typing import Tuple
 
 from rich.console import Console
 
 
 class Loading:
-    sleep_time = 0.1
-    is_querying = None
+    sleep_time: float = 0.1
+    is_querying: bool | None = None
 
-    __spinner = ('⣾ ', '⣽ ', '⣻ ', '⢿ ', '⡿ ', '⣟ ', '⣯ ', '⣷ ')
+    __spinner: Tuple = ('⣾ ', '⣽ ', '⣻ ', '⢿ ', '⡿ ', '⣟ ', '⣯ ', '⣷ ')
 
     @classmethod
     def __action(cls, message: str):
@@ -58,7 +58,7 @@ class Loading:
     def start(cls, message: str):
         try:
             cls.is_querying = True
-            thread = Thread(target=cls.__action, args=(message,))
+            thread: Thread = Thread(target=cls.__action, args=(message,))
             thread.start()
             return thread
         except Exception as ex:

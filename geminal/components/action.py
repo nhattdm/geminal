@@ -30,7 +30,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
-
 import json
 import os
 import re
@@ -68,9 +67,7 @@ class Action:
 
         try:
             user_selection = self.selection.partial_interactive_actions()
-        except KeyboardInterrupt:
-            quit_program()
-        except (Exception,):
+        except (KeyboardInterrupt, Exception,):
             quit_program()
 
         match user_selection:
@@ -120,9 +117,7 @@ class Action:
                 return
 
     def __copy_last_message(self) -> None:
-        log(
-            anything='[*] You selected the action to copy the last message to your clipboard.'
-        )
+        log(anything='[*] You selected the action to copy the last message to your clipboard.')
 
         if self.prompt_count == 0:
             log_error(message='There are no messages to copy.')
@@ -133,9 +128,7 @@ class Action:
         return
 
     def __copy_code_block_from_last_message(self) -> None:
-        log(
-            anything='[*] You selected the action to copy a code block from the last message to your clipboard.'
-        )
+        log(anything='[*] You selected the action to copy a code block from the last message to your clipboard.')
 
         if self.prompt_count == 0:
             log_error(message='There are no messages to copy.')
@@ -313,9 +306,7 @@ class Action:
 
         try:
             selected_file_name = f'{file_names[file_name_index]}'
-        except KeyboardInterrupt:
-            quit_program()
-        except (Exception,):
+        except (KeyboardInterrupt, Exception,):
             quit_program()
 
         selected_file_path: str = os.path.join(
@@ -360,7 +351,7 @@ class Action:
 def delete_conversation() -> None:
     log(anything='[*] You selected the action to delete a saved conversation.')
 
-    file_names: list[str] = os.listdir(path=save_dir)
+    file_names: List[str] = os.listdir(path=save_dir)
     file_name_menu: TerminalMenu = TerminalMenu(
         menu_entries=file_names,
         title='[*] Available saved conversations files:'
@@ -370,9 +361,7 @@ def delete_conversation() -> None:
 
     try:
         selected_file_name = f'{file_names[file_name_index]}'
-    except KeyboardInterrupt:
-        quit_program()
-    except (Exception,):
+    except (KeyboardInterrupt, Exception,):
         quit_program()
 
     selected_file_path: str = os.path.join(save_dir, selected_file_name)
